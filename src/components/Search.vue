@@ -22,21 +22,23 @@
 
 <style lang="scss" scoped>
 .search  {
+    position: relative;
     height: 50vh;
     background: black;
 }
 
 .input {
-    align-self: center;
-    width: 75%;
-    display: inline-block;
-    margin: auto;
-}
-
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 30%;
 .searhButton {
-    align-self: center;
+    position: absolute;
+    top: 50%;
     margin-left: 1rem;
     display: inline;
 }
+}
+
 
 </style>
