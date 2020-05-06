@@ -22,6 +22,7 @@ import Footer from '@/components/Footer';
         },
         
     };
+
 </script>
 
 <style lang="scss" scoped>

@@ -47,16 +47,39 @@
     // right: 30%;
     vertical-align: middle;
     margin: auto;
+    background: url('/src/assets/search-solid.svg');
+    padding-left: 20px;
 }
 
 .searchInput {
+    background-color: #ccc;
     position: absolute;
     top: 45%;
     left: 35%;
     height: 4rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     width: 30%;
+    padding-left: 20px;
+    border-radius: 50px;
+    border: none;
+    color: #eee;
+    background-position: 20px 0;
 }
+
+.searchInput:focus {
+    padding-left: 20px;
+}
+
+::placeholder {
+    padding: 20px;
+    color: #eee;
+}
+
+.b-form-input,
+.form-control {
+    padding-left: 20px !important;
+}
+
 
 // .searchButton {
 //     position: absolute;
