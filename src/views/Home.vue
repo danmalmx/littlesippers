@@ -1,18 +1,24 @@
 <template>
 <div>
-    <h1>Navbar goes here</h1>
-    <h1>Map Goes here</h1>
+    <Navbar />
+    <GoogleMap />
     <Search />
-    <h1>Footer goes here</h1>
+    <Footer />
 </div>
 </template>
 
 <script>
+import Navbar from '@/components/NavBar';
+import GoogleMap from '@/components/GoogleMaps';
 import Search from '@/components/Search';
+import Footer from '@/components/Footer';
 
     export default {
         components:{ 
+            Navbar,
             Search,
+            GoogleMap,
+            Footer,
         },
         
     };

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Navbar goes here</h1>
+        <h1>Footer goe here</h1>
     </div>
 </template>
 
