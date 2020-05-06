@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Map Goes Here</h1>
+        <h1 v-show="error" :class="{'danger': error}">{{error}}<i class="fas fa-times floatRight" @click="closeErrorMessage"></i></h1>
         <div id="map"></div>
 
     </div>
@@ -26,7 +26,9 @@
     methods: {
         getUsersLatLng() {
             if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
+                navigator.geolocation.getCurrentPosition(
+                
+                position => {
                     this.lat = position.coords.latitude;
                     this.lng = position.coords.longitude
                     console.log(position.coords.latitude)
@@ -39,8 +41,13 @@
                 )
 
             } else {
-                throw 'Your browser does not support golocation API';
+                let cfs = confirm('Allow browser to know your current location')
+                console.log('Your browser does not support golocation API');
             }
+        },
+
+        closeErrorMessage()  {
+            this.error = '';
         }
     }
         
@@ -48,5 +55,27 @@
 </script>
 
 <style lang="scss" scoped>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.danger {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    background: red;
+}
+
+.floatRight {
+    margin-right: 20px;
+    cursor: pointer;
+    float: right;
+    transition: color ease-in 0.25s;
+}
+.floatRight:hover {
+    color:#fff
+}
 
 </style>
