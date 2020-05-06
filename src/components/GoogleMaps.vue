@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h1 v-show="error" :class="{'danger': error}">{{error}}<i class="fas fa-times floatRight" @click="closeErrorMessage"></i></h1>
+        <h1>Map goes here</h1>
+        <h3 v-show="error" :class="{'danger': error}" class="animated fadeInUp faster">{{error}}<i class="fas fa-times floatRight" @click="closeErrorMessage"></i></h3>
         <div id="map"></div>
 
     </div>
@@ -11,7 +12,7 @@
 
     data() {
         return {
-            apiKey: 'AIzaSyDz5U-vkiXLyBmHyHyIqj0XOweq7EkmoZ0',
+            apiKey: 'AIzaSyBIyBiGEuyhC5Cc-_W8k654CDOD6i2XndM',
             lat: 0,
             lng: 0,
             error: '',
@@ -66,6 +67,7 @@
     padding: 1rem;
     text-align: center;
     background: red;
+    transition: all ease-in 1s;
 }
 
 .floatRight {
