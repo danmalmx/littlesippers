@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <b-container fluid>
         <h3 v-show="error" :class="{'danger': error}" class="animated fadeInUp faster">{{error}}<i class="fas fa-times floatRight" @click="closeErrorMessage"></i></h3>
         <div id="map">Map shows here</div>
-    </div>
+    </b-container fluid>
 </template>
 
 <script>
@@ -17,75 +17,56 @@
             lng: 0,
             error: '',
             google: null,
+            pos: null,
+            map: null, 
+            infoWindow: null,
         }
     },
 
     async mounted() {
         await this.initiatGoogleMaps();
         await this.initMap();
-        // await this.getUsersLatLng();
     },
 
     methods: {
-        getUsersLatLng() {
-            if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    
-                    position => {
-                    this.lat = position.coords.latitude;
-                    this.lng = position.coords.longitude;
-                    console.log(position.coords.latitude);
-                    console.log(position.coords.longitude);
-                },
-                error => {
-                    this.error = error.message
-                    console.log(error.message)
-                }
-                )
-
-            } else {
-                console.log('Your browser does not support golocation API');
-            }
-        },
 
         closeErrorMessage()  {
             this.error = '';
         },
 
         initMap() {
+            this.map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 57.7200000, lng: 12.9400000, },
+                zoom: 13,
+            });
+
+            this.infoWindow = new google.maps.InfoWindow;
             
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-            
-                position => {
-                this.lat = position.coords.latitude;
-                this.lng = position.coords.longitude;
-                console.log(position.coords.latitude);
-                console.log(position.coords.longitude);
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition( (position) => {
+                    
+                this.pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+                    // this.infoWindow.setPosition(this.pos);
+                    console.log(this.pos)
+                    this.infoWindow.open(this.map);
+                    this.map.setCenter(this.pos);
+
             },
-        error => {
-            this.error = error.message
-            console.log(error.message)
-        }
+
+                error => {
+                    this.error = error.message
+                    console.log(error.message)
+            }   
         )
 
         } else {
             console.log('Your browser does not support golocation API');
         }
         
-        let options = {
-            center: {
-                // lat: 57.7250,
-                // lng: 12.9600,
-                lat: this.lat,
-                lng: this.lng,
-            },
-            zoom: 3,
-        }
 
-            console.log(this.lat, this.lng)
-
-            let map = new google.maps.Map(document.getElementById('map'), options);
 
         },
 
@@ -96,16 +77,22 @@
             this.google = googleMapApi;
         }
     }
-        
-    }
+}
     
 </script>
 
 <style lang="scss" scoped>
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+#map {
+    height: 55vh;
+    width: 100%;
+    // border: .8rem solid #fff;
 }
 
 .danger {
@@ -125,11 +112,6 @@
 }
 .floatRight:hover {
     color:#aaa
-}
-
-#map {
-    height: 500px;
-    width: 100%;
 }
 
 </style>

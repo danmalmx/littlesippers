@@ -1,6 +1,6 @@
 <template>
 
-  <div class="search">
+  <b-container fluid class="search">
     <b-form-group class="searchSet">
         <div class="searchBox">
             <b-form-input class="searchInput" placeholder="Search for a location"></b-form-input>
@@ -12,7 +12,7 @@
             <b-button class="shbSize"variant="primary">Find Close By</b-button>
         </div>         -->
     </b-form-group>
-  </div>
+  </b-container fluid>
 </template>
 
 <script>
@@ -30,8 +30,10 @@
 
 .search  {
     position: relative;
-    height: 40vh;
-    background: black;
+    height: 25vh;
+    background: darkgrey;
+    // (1, 5, 243); 
+    background-color: transparent(0.6);
 }
 
 .searchSet {
@@ -52,18 +54,17 @@
 }
 
 .searchInput {
-    background-color: #ccc;
+    background-color: #fff;
     position: absolute;
-    top: 45%;
-    left: 35%;
-    height: 4rem;
-    font-size: 1.2rem;
-    width: 30%;
-    padding-left: 20px;
+    top: 35%;
+    left: 30%;
+    height: 5rem;
+    font-size: 1.5rem;
+    width: 45%;
     border-radius: 50px;
-    border: none;
-    color: #eee;
-    background-position: 20px 0;
+    color: #ccc;
+    background-position: 20px;
+    border: 3px solid #999;
 }
 
 .searchInput:focus {
@@ -72,12 +73,7 @@
 
 ::placeholder {
     padding: 20px;
-    color: #eee;
-}
-
-.b-form-input,
-.form-control {
-    padding-left: 20px !important;
+    color: #ccc;
 }
 
 
