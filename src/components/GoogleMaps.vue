@@ -12,7 +12,7 @@
         
         data() {
             return {
-            apiKey: 'AIzaSyBIyBiGEuyhC5Cc-_W8k654CDOD6i2XndM',
+            apiKey: '',
             lat: 0,
             lng: 0,
             error: '',
