@@ -1,5 +1,8 @@
 # littlesippers
 
+## Stack
+#### MongoDB | Express | Vue | Node 
+
 ## Project setup
 ```
 npm install
